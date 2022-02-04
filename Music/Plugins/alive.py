@@ -42,24 +42,24 @@ async def _human_time_duration(seconds):
     return ', '.join(parts)
 
 
-KYY_IMG = "https://telegra.ph/file/2b610c918dec590d2777b.jpg"
+KYY_IMG = "https://telegra.ph/file/8e4c724c97f6a1cdad74a.jpg"
 
 
-@app.on_message(filters.command(["alive", "alive@Tg_Vc_00_Bot"]))
+@app.on_message(filters.command(["shinobi", "alive@Tg_Vc_00_Bot"]))
 async def alive(client, message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
     uptime = await _human_time_duration(int(uptime_sec))
     await client.send_photo(message.chat.id,
         photo=f"{KYY_IMG}",
-        caption=f"""**Holla {message.from_user.mention()}.**
-✘ **I'm Working Properly** \n\n"
-✘ **Bot : Latest** \n\n"
-✘ **Bot Info : Online** \n\n"
-✘ **Uptime : `{uptime}`** \n\n"
-✘ **Pyrogram Version : `{pyrover}`** \n\n"
-✘ **PyTgCalls Version: `{pytover.__version__}`** \n\n"
-✘ **Using New Version** \n\n"
+        caption=f"""**Halo {message.from_user.mention()}.**
+**I'm Working Properly** \n"
+✿ **Bot : Latest** \n"
+✿ **Bot Info : Online** \n"
+✿ **Uptime : `{uptime}`** \n"
+✿ **Pyrogram Version : `{pyrover}`** \n"
+✿ **PyTgCalls Version: `{pytover.__version__}`** \n\n"
+✿ **Using New Version** \n"
 **Thanks For Using Me🔥**""",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -74,3 +74,4 @@ async def alive(client, message):
             ]
         )
     )
+
