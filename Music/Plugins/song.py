@@ -23,7 +23,7 @@ def time_to_seconds(time):
 
 
 @Client.on_message(
-    command(["song", f"song@{BOT_USERNAME}", "vsong", f"vsong@{BOT_USERNAME}"])
+    command(["csong", f"song@{BOT_USERNAME}", "cvsong", f"vsong@{BOT_USERNAME}"])
 )
 async def mpthree(_, message: Message):
     chat_id = message.chat.id
@@ -82,7 +82,7 @@ Kembalikan ke Akun Pengguna Dari Hak Admin.
                 """
 **Penggunaan:**
 
-/song atau /vsong [Judul Lagu Atau Youtube Link] - untuk mendownload lagu dan video
+/csong atau /cvsong [Judul Lagu Atau Youtube Link] - untuk mendownload lagu dan video
 """
             )
         query = message.text.split(None, 1)[1]
