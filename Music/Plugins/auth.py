@@ -10,7 +10,7 @@ from Music.MusicUtilities.database.changers import (alpha_to_int, int_to_alpha,
                                       time_to_seconds)
 
 
-@app.on_message(filters.command("auth") & filters.group)
+@app.on_message(filters.command("cauth") & filters.group)
 @AdminActual
 async def auth(_, message: Message):
     if not message.reply_to_message:
@@ -79,7 +79,7 @@ async def auth(_, message: Message):
         await message.reply_text(f"Already in the Authorised Users List.")
 
 
-@app.on_message(filters.command("unauth") & filters.group)
+@app.on_message(filters.command("cunauth") & filters.group)
 @AdminActual
 async def whitelist_chat_func(_, message: Message):
     if not message.reply_to_message:
@@ -111,7 +111,7 @@ async def whitelist_chat_func(_, message: Message):
         return await message.reply_text(f"Not an Authorised User.")
 
 
-@app.on_message(filters.command("authusers") & filters.group)
+@app.on_message(filters.command("cauthusers") & filters.group)
 async def authusers(_, message: Message):
     _playlist = await get_authuser_names(message.chat.id)
     if not _playlist:
