@@ -33,7 +33,7 @@ from Music.MusicUtilities.helpers.filters import command
 from Music.MusicUtilities.helpers.decorators import errors
 from Music.MusicUtilities.database.functions import start_restart_stage
 
-@Client.on_message(command("update") & filters.user(OWNER))
+@Client.on_message(command("cupdate") & filters.user(OWNER))
 @errors
 async def update(_, message: Message):
     m = subprocess.check_output(["git", "pull"]).decode("UTF-8")
