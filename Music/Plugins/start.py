@@ -110,7 +110,7 @@ async def welcome(_, message: Message):
 @Client.on_message(
     filters.group
     & filters.command(
-        ["start", "help", f"start@{BOT_USERNAME}", f"help@{BOT_USERNAME}"]
+        ["cstart", "chelp", f"start@{BOT_USERNAME}", f"help@{BOT_USERNAME}"]
     )
 )
 async def start(_, message: Message):
@@ -119,7 +119,7 @@ async def start(_, message: Message):
     await message.reply_text(
         f"""
 Terima kasih telah memasukkan saya di {message.chat.title}.
-Musik itu hidup.
+
 
 Untuk bantuan silahkan klik tombol dibawah.
 """,
@@ -129,7 +129,7 @@ Untuk bantuan silahkan klik tombol dibawah.
     return
 
 
-@Client.on_message(filters.private & filters.incoming & filters.command("start"))
+@Client.on_message(filters.private & filters.incoming & filters.command("cstart"))
 async def play(_, message: Message):
     if len(message.command) == 1:
         user_id = message.from_user.id
@@ -140,7 +140,7 @@ async def play(_, message: Message):
             text=f"""
 **✨ Selamat Datang {rpk}!
 
-💬 [{BOT_NAME}](tg://user?id=2129034376) memungkinkan anda untuk memutar musik pada grup melalui obrolan suara yang baru di Telegram!
+💬 [{BOT_NAME}](tg://user?id=2081504805) memungkinkan anda untuk memutar musik pada grup melalui obrolan suara yang baru di Telegram!
 
 💡 Untuk Mengetahui Semua Perintah Bot Dan Bagaimana Cara Kerja Nya Dengan Menekan Tombol » 📚 ᴄᴏᴍᴍᴀɴᴅ​!**
 
@@ -202,7 +202,7 @@ async def play(_, message: Message):
                 await message.reply_text(text)
 
 
-@app.on_message(filters.command("settings") & filters.group)
+@app.on_message(filters.command("csettings") & filters.group)
 async def settings(_, message: Message):
     c_id = message.chat.id
     _check = await get_assistant(c_id, "assistant")
