@@ -13,7 +13,7 @@ from youtubesearchpython import VideosSearch
 import lyricsgenius
 import re
 
-@Client.on_callback_query(filters.regex(pattern=r"lyrics"))
+@Client.on_callback_query(filters.regex(pattern=r"clyrics"))
 async def lyricssex(_,CallbackQuery):
     callback_data = CallbackQuery.data.strip()
     callback_request = callback_data.split(None, 1)[1]
@@ -56,7 +56,7 @@ async def lyricssex(_,CallbackQuery):
     await CallbackQuery.message.reply_text(xxx)
     
     
-@Client.on_message(filters.command("lyrics"))
+@Client.on_message(filters.command("clyrics"))
 async def lrsearch(_, message: Message):  
     m = await message.reply_text("🔎 Mencari Lirik")
     query = message.text.split(None, 1)[1]
