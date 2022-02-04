@@ -130,13 +130,13 @@ async def stop_cmd(_, message):
     checking = message.from_user.mention
     chat_id = message.chat.id
     if not await is_active_chat(chat_id):
-        return await message.reply_text("Saya tidak berpikir jika ada sesuatu yang diputar di obrolan suara")
+        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar musik")
     elif await is_music_playing(chat_id):
-        return await message.reply_text("Saya tidak berpikir jika ada sesuatu yang diputar di obrolan suara") 
+        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar musik") 
     else:
         await music_on(chat_id)
         await music.pytgcalls.resume_stream(chat_id)
-        await message.reply_text(f"**🎧 Obrolan Suara Dilanjutkan Oleh {checking}!**")
+        await message.reply_text(f"**🎧 Musik telah Dilanjutkan Oleh {checking}!**")
 
 @app.on_message(filters.command(["end", f"end@{BOT_USERNAME}", "e"]))
 async def stop_cmd(_, message): 
@@ -157,7 +157,7 @@ async def stop_cmd(_, message):
         await music.pytgcalls.leave_group_call(chat_id)
         await message.reply_text(f"**🎧 Obrolan Suara Berakhir/Dihentikan {checking}!**") 
     else:
-        return await message.reply_text("Saya tidak berpikir jika ada sesuatu yang diputar di obrolan suara")
+        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar music")
     
 @app.on_message(filters.command(["skip", f"skip@{BOT_USERNAME}", "sk"]))
 async def stop_cmd(_, message): 
@@ -171,7 +171,7 @@ async def stop_cmd(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
     if not await is_active_chat(chat_id):
-        await message.reply_text("Tidak ada music yang diputar")
+        await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar music")
     else:
         task_done(chat_id)
         if is_empty(chat_id):
@@ -307,8 +307,15 @@ async def stop_cmd(_, message):
 
 @app.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
 async def reload(_, message):
+  if message.sender_chat:
+        return await message.reply_text("Kamu adalah __Admin Anonim__!\nKembalikan ke Akun Pengguna.") 
+    permission = "can_manage_voice_chats"
+    m = await adminsOnly(permission, message)
+    if m == 1:
+        return
+    checking = message.from_user.mention
     chat_id = message.chat.id
     await _.send_message(
     chat_id,
     "✅ Bot dimulai ulang **berhasil**\n\n✅ **Admin** daftar telah **diperbarui**"
-)
+     )
