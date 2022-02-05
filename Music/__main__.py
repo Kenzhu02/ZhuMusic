@@ -59,8 +59,7 @@ async def load_start():
     await client.join_chat("ahhsudahlahhh")
     await client.join_chat("Kenzusupport")
     print("[INFO]: STARTED")
-    
-   
+      
 loop = asyncio.get_event_loop()
 loop.run_until_complete(load_start())
 
