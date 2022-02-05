@@ -7,7 +7,7 @@ from pyrogram import filters, Client
 from Music.MusicUtilities.database.onoff import (is_on_off, add_on, add_off)
 from pyrogram.types import Message
 
-@app.on_message(filters.command("speedtest") & ~filters.edited)
+@app.on_message(filters.command("cspeedtest") & ~filters.edited)
 async def gstats(_, message):
     userid = message.from_user.id
     if await is_on_off(2):
@@ -15,7 +15,7 @@ async def gstats(_, message):
             pass
         else:
             return
-    m = await message.reply_text("__Running KyySpeedTest From Server__")
+    m = await message.reply_text("Running SpeedTest From Shinobi Kenzu Server")
     try:
         test = speedtest.Speedtest()
         test.get_best_server()
