@@ -307,13 +307,6 @@ async def stop_cmd(_, message):
 
 @app.on_message(filters.command(["reload", f"reload@{BOT_USERNAME}"]))
 async def reload(_, message):
-  if message.sender_chat:
-        return await message.reply_text("Kamu adalah __Admin Anonim__!\nKembalikan ke Akun Pengguna.") 
-    permission = "can_manage_voice_chats"
-    m = await adminsOnly(permission, message)
-    if m == 1:
-        return
-    checking = message.from_user.mention
     chat_id = message.chat.id
     await _.send_message(
     chat_id,
