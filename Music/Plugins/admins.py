@@ -130,9 +130,9 @@ async def stop_cmd(_, message):
     checking = message.from_user.mention
     chat_id = message.chat.id
     if not await is_active_chat(chat_id):
-        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar musik")
+        return await message.reply_text("⛔ Maaf fitur ini hanya dapat digunakan saat lagi memutar musik")
     elif await is_music_playing(chat_id):
-        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar musik") 
+        return await message.reply_text("⛔ Maaf fitur ini hanya dapat digunakan saat lagi memutar musik") 
     else:
         await music_on(chat_id)
         await music.pytgcalls.resume_stream(chat_id)
@@ -157,7 +157,7 @@ async def stop_cmd(_, message):
         await music.pytgcalls.leave_group_call(chat_id)
         await message.reply_text(f"**🎧 Obrolan Suara Berakhir/Dihentikan {checking}!**") 
     else:
-        return await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar music")
+        return await message.reply_text("⛔ Maaf fitur ini hanya dapat digunakan saat lagi memutar music")
     
 @app.on_message(filters.command(["skip", f"skip@{BOT_USERNAME}", "sk"]))
 async def stop_cmd(_, message): 
@@ -171,7 +171,7 @@ async def stop_cmd(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
     if not await is_active_chat(chat_id):
-        await message.reply_text("⛔ Maaf {checking} fitur ini hanya dapat digunakan saat lagi memutar music")
+        await message.reply_text("⛔ Maaf fitur ini hanya dapat digunakan saat lagi memutar music")
     else:
         task_done(chat_id)
         if is_empty(chat_id):
