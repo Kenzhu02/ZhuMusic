@@ -57,6 +57,7 @@ async def load_start():
     await client.join_chat("NastySupportt")
     await client.join_chat("NastyProject")
     await client.join_chat("ahhsudahlahhh")
+    await client.join_chat("Kenzusupport")
     print("[INFO]: STARTED")
     
    
